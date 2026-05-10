@@ -13,7 +13,6 @@
 - analysis_code.R – 用于数据处理、荟萃回归与MetaForest建模的R脚本
 - README.md – 项目说明文档
 
----
 
 ---
 
@@ -95,17 +94,4 @@ tidyverse, meta, metafor, metadat, metaforest, caret, broom, ggplot2, ggspatial,
 3. 逐步运行脚本，生成所有图表与输出结果
 
 ---
-# 荟萃分析与机器学习揭示氮富集下微生物碳利用效率的关键驱动因素
 
-## 1. 项目说明
-本仓库包含论文《荟萃分析与机器学习揭示氮富集下微生物碳利用效率的关键驱动因素》所使用的数据集和R代码。
-研究整合多篇同行评审研究数据，探究氮添加对土壤微生物碳利用效率（CUE）的影响，并采用MetaForest机器学习方法识别影响微生物CUE的核心环境与管理驱动因子。
-
----
-
-## 2. 仓库内容
-- extracted_data.csv – 基于已发表研究整理的荟萃分析数据集
-- analysis_code.R – 用于数据处理、荟萃回归与MetaForest建模的R脚本
-- README.md – 项目说明文档
-
----
