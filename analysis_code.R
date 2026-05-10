@@ -3,6 +3,7 @@
 # Load necessary packages
 library(tidyverse)
 library(sf)
+library(rnaturalearth)
 library(ggspatial)
 library(RColorBrewer)
 library(ggtext)
@@ -22,11 +23,9 @@ my_colormap <- brewer.pal(8, 'Spectral')
 scatter_df <- read.csv("extracted_data.csv") 
 scatter_df_tro <- st_as_sf(scatter_df, coords = c("Longitude", "Latitude"), crs = 4326)
 
-library(rnaturalearth)
-library(sf)
 global <- ne_countries(scale = "medium", returnclass = "sf")
 
-#The shp file needs to be prepared in advance and placed in the working path.
+# Deprecated: no longer use local global.shp file
 
 p0 <- ggplot() + 
   geom_sf(data = global, fill = "lightgray", color = "black", size = 0.6) + 
