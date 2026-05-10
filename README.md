@@ -34,3 +34,50 @@
 | MCNR | 微生物碳氮比（无单位） |
 
 缺失值使用 NA 表示。
+## 4. R代码使用说明
+文件：analysis_code.R
+编码：UTF-8
+软件要求：R 4.2.0 及以上版本
+
+### 所需R包
+tidyverse, meta, metafor, metadat, metaforest, caret, broom, ggplot2, ggspatial, RColorBrewer, ggtext, rcartocolor, ggsci, sf
+
+运行脚本前请确保所有包已安装并更新至最新版本。
+
+### 脚本功能与步骤
+1. 采样点地图绘制
+   基于经纬度可视化研究站点的全球分布
+   输出：Figure 1 Geographic distribution of observational field studies included in the meta-analysis.pdf
+
+2. 效应量计算与森林图
+   计算对数响应比，拟合随机效应荟萃分析模型
+   输出：Figure 2 Forest plot of the effects of nitrogen addition on soil microbial carbon use efficiency.pdf
+
+3. 发表偏倚检验
+   绘制漏斗图并进行Egger回归检验
+   输出：Figure S1 Funnel plot with regression test for asymmetry.pdf
+
+4. 亚组与调节变量分析
+   对降水量（MAP）和氮添加水平进行荟萃回归
+   输出：Figure 3 Effects of nitrogen addition on soil microbial carbon use efficiency across precipitation and nitrogen addition levels.pdf
+   同时进行亚组效应t检验
+
+5. 连续调节变量回归
+   连续变量荟萃回归，含预测区间与QQ图
+   输出：Figure 4、Figure S4 回归图与诊断图
+
+6. 机器学习（MetaForest）
+   训练MetaForest模型，按重要性排序调节变量
+   执行递归特征筛选、参数调优、偏依赖分析
+   输出：
+   - Figure S2_a、S2_b：收敛图
+   - Figure S3：重复变量重要性图
+   - Figure S5：预测值与观测值对比图
+   - Figure 5、Figure 6：重要性柱状图与偏依赖图
+
+### 运行方法
+1. 将 analysis_code.R、extracted_data.csv、global.shp 放在工作目录下
+2. 在 RStudio 中打开 analysis_code.R
+3. 逐步运行脚本，生成所有图表与输出结果
+
+---
