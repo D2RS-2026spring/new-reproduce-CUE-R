@@ -94,4 +94,14 @@ tidyverse, meta, metafor, metadat, metaforest, caret, broom, ggplot2, ggspatial,
 3. 逐步运行脚本，生成所有图表与输出结果
 
 ---
+## 5. 引用方式
+如使用本数据集或代码，请引用：
+Yin, T., et al. (2025). Dataset and code for "Meta-analysis and Machine Learning Reveal Key Drivers of Microbial Carbon Use Efficiency Under Nitrogen Enrichment". Zenodo. [DOI将在Zenodo发布后补充]
 
+---
+
+## 6. 许可协议
+本仓库采用知识共享署名 4.0 国际许可协议（CC BY 4.0）。
+您可自由分享和改编本材料，包括用于商业用途，只需注明原作者出处。
+
+---
