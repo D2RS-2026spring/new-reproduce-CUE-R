@@ -96,7 +96,7 @@ tidyverse, meta, metafor, metadat, metaforest, caret, broom, ggplot2, ggspatial,
 ---
 ## 5. 本文文献引用方式
 如使用本数据集或代码，请引用：
-Yin, T., et al. (2025). Dataset and code for "Meta-analysis and Machine Learning Reveal Key Drivers of Microbial Carbon Use Efficiency Under Nitrogen Enrichment". Zenodo. 
+Yin, T., et al. (2025). Dataset and code for "Meta-analysis and Machine Learning Reveal Key Drivers of Microbial Carbon Use Efficiency Under Nitrogen Enrichment".
 
 ---
 
