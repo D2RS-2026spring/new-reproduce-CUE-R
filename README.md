@@ -47,7 +47,7 @@
 | MCNR | 微生物碳氮比（无单位） |
 
 缺失值使用 NA 表示。
-## 4. R代码使用说明
+## 4. R代码使用说明及项目复现方法
 文件：analysis_code.R
 编码：UTF-8
 软件要求：R 4.2.0 及以上版本
@@ -88,7 +88,7 @@ tidyverse, meta, metafor, metadat, metaforest, caret, broom, ggplot2, ggspatial,
    - Figure S5：预测值与观测值对比图
    - Figure 5、Figure 6：重要性柱状图与偏依赖图
 
-### 运行方法
+### 项目复现方法
 1. 将 analysis_code.R、extracted_data.csv、global.shp 放在工作目录下
 2. 在 RStudio 中打开 analysis_code.R
 3. 逐步运行脚本，生成所有图表与输出结果
