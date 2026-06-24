@@ -2,3 +2,4 @@ _book/
 *.html
 *.knit.md
 *_files/
+figures/

@@ -55,22 +55,12 @@ format:
 | SOC/TN/TP | 土壤有机碳、全氮、全磷含量 |
 | MBC/MBN | 微生物生物量碳、氮 |
 
-### 2.3 数据加载
+### 2.3 复现步骤
 
-```r
-# 加载所需包
-library(tidyverse)
-library(meta)
-library(metafor)
-library(metadat)
-library(metaforest)
-library(caret)
-library(broom)
-library(ggplot2)
-
-# 读取数据
-data <- read.csv("extracted_data.csv")
-```
+1. 下载数据文件 `extracted_data.csv`
+2. 在 R 中安装所需包：`tidyverse, meta, metafor, metadat, metaforest, caret`
+3. 运行 `analysis_code.R` 脚本
+4. 生成所有图表
 
 ---
 
@@ -101,7 +91,11 @@ ggplot() +
   theme_minimal()
 ```
 
-**输出**: `Figure 1 Geographic distribution of observational field studies included in the meta-analysis.pdf`
+### 3.3 复现结果
+
+![研究站点全球分布图](figures/Figure%201%20Geographic%20distribution%20of%20observational%20field%20studies%20included%20in%20the%20meta-analysis-1.png)
+
+**结果解读**：研究站点遍布全球多个大洲，涵盖不同气候带和生态系统类型，数据具有较好的地理代表性。
 
 ---
 
@@ -126,12 +120,14 @@ forest(model, slab = data$Site,
        header = "Study")
 ```
 
-**输出**: `Figure 2 Forest plot of the effects of nitrogen addition on soil microbial carbon use efficiency.pdf`
+### 4.3 复现结果
+
+![森林图 - 氮添加对土壤微生物碳利用效率的影响](figures/Figure%202%20Forest%20plot%20of%20the%20effects%20of%20nitrogen%20addition%20on%20soil%20microbial%20carbon%20use%20efficiency-1.png)
 
 **结果解读**：
 
-- 大部分研究显示氮添加降低微生物CUE
-- 整体效应量为负值，表明氮富集对CUE有负面影响
+- 大部分研究显示氮添加降低微生物CUE（效应量为负值）
+- 整体效应量显著，表明氮富集对CUE有负面影响
 - 研究间存在异质性，提示调节因子的作用
 
 ---
@@ -152,7 +148,9 @@ funnel(model)
 regtest(model, model = "lm")
 ```
 
-**输出**: `Figure S1 Funnel plot with regression test for asymmetry.pdf`
+### 5.3 复现结果
+
+![漏斗图 - 发表偏倚检验](figures/Figure%20S1%20Funnel%20plot%20with%20regression%20test%20for%20asymmetry-1.png)
 
 **结果解读**：
 
@@ -185,7 +183,9 @@ ggplot(data, aes(x = MAP, y = yi)) +
   theme_minimal()
 ```
 
-**输出**: `Figure 3 Effects of nitrogen addition on soil microbial carbon use efficiency across precipitation and nitrogen addition levels.pdf`
+### 6.3 复现结果
+
+![氮添加水平和降水量对CUE的影响](figures/Figure%203%20Effects%20of%20nitrogen%20addition%20on%20soil%20microbial%20carbon%20use%20efficiency%20across%20precipitation%20and%20nitrogen%20addition%20levels-1.png)
 
 **结果解读**：
 
@@ -212,10 +212,9 @@ model_pH <- rma(yi, vi, mods = ~ pH, data = data)
 predict(model_SOC, newmods = seq(0, 50, 1))
 ```
 
-**输出**:
+### 7.3 复现结果
 
-- `Figure 4 Meta regression analysis.pdf`
-- `Figure S4 Quantile-quantile plots of residuals from meta-regression models.pdf`
+![荟萃回归分析](figures/Figure%204%20Meta%20regression%20analysis-1.png)
 
 **结果解读**：
 
@@ -245,21 +244,42 @@ mf_model <- MetaForest(yi ~ MAP + N_addtion + pH + MAT + SOC + TN + TP +
 varImpPlot(mf_model)
 ```
 
-**输出**:
+### 8.3 复现结果
 
-- `Figure S2_a_Convergence_plot.pdf`
-- `Figure S2_b_Convergence_plot_for_final_model.pdf`
-- `Figure S3 Replicated variable importance for moderator pre-selection.pdf`
-- `Figure S5 Relationship between predicted and observed log response ratio of carbon use efficiency.pdf`
-- `Figure 5 Variable importance plot.pdf`
-- `Figure 6 Partial dependence plots of important predictors.pdf`
+#### 变量重要性图
+
+![变量重要性图](figures/Figure%205%20Variable%20importance%20plot-1.png)
 
 **结果解读**：
 
 - **MAP**（年均降水量）是最重要的驱动因子
 - **N_addtion**（氮添加水平）次之
 - **SOC**（土壤有机碳）和**pH**也有重要影响
-- 偏依赖分析显示非线性关系
+
+#### 偏依赖图
+
+![偏依赖图](figures/Figure%206%20Partial%20dependence%20plots%20of%20important%20predictors%20for%20the%20effect%20of%20nitrogen%20addition%20on%20soil%20microbial%20carbon%20use%20efficiency-1.png)
+
+![偏依赖图2](figures/Figure%206%20Partial%20dependence%20plots%20of%20important%20predictors%20for%20the%20effect%20of%20nitrogen%20addition%20on%20soil%20microbial%20carbon%20use%20efficiency-2.png)
+
+![偏依赖图3](figures/Figure%206%20Partial%20dependence%20plots%20of%20important%20predictors%20for%20the%20effect%20of%20nitrogen%20addition%20on%20soil%20microbial%20carbon%20use%20efficiency-3.png)
+
+**结果解读**：
+
+- 偏依赖分析显示各变量对CUE的非线性影响
+- MAP和N_addtion的边际效应最为显著
+
+#### 补充材料
+
+![收敛图](figures/Figure%20S2_a_Convergence_plot-1.png)
+
+![最终模型收敛图](figures/Figure%20S2_b_Convergence_plot_for_final_model-1.png)
+
+![重复变量重要性图](figures/Figure%20S3%20Replicated%20variable%20importance%20for%20moderator%20pre-selection-1.png)
+
+![QQ图](figures/Figure%20S4%20Quantile-quantile%20plots%20of%20residuals%20from%20meta-regression%20models-1.png)
+
+![预测值与观测值对比](figures/Figure%20S5%20Relationship%20between%20predicted%20and%20observed%20log%20response%20ratio%20of%20carbon%20use%20efficiency-1.png)
 
 ---
 
